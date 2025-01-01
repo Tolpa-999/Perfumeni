@@ -1,4 +1,3 @@
-// src/pages/ProductPage/ProductPage.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../utils/api';
@@ -7,11 +6,7 @@ import Reviews from '../components/Reviews';
 import Gallery from '../components/Gallery';
 import ShareButton from '../components/ShareButton';
 import { Helmet } from 'react-helmet';
-import { set } from 'react-hook-form';
 import TextWithSpacesAfterWords from '../utils/TextWithSpacesAfterWords';
-import ReviewsPagination from '../components/ReviewsPaginatin';
-import { div } from 'framer-motion/client';
-
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -28,13 +23,9 @@ const ProductPage = () => {
       .catch(error => console.error(error));
   }, [id]);
 
-  
-
   if (!product) {
     return <Skeleton count={1} />;
   }
-
-
 
   function handleSizeClick(size) {
     // Handle size click logic
@@ -51,7 +42,12 @@ const ProductPage = () => {
     
     <div className="w-full p-4">
         <div className='w-full h-full'>
-          <img src={images[image]} alt={product.name} className="w-full h-auto" />
+          {/* Image section */}
+          <img 
+            src={images[image]} 
+            alt={product.name} 
+            className="w-full h-auto max-w-full" 
+          />
         </div>
       <p className="text-[2.60rem] text-center font-bello my-8 font-[400] text-[#3b3b39]">{product.name}</p>
       <p className="text-[#878784] font-light text-base text-center mb-4">
@@ -60,16 +56,24 @@ const ProductPage = () => {
       </p>
       <div className='flex justify-center gap-5'>
         {product.sizes.map((size, index) => (
-          <p key={size} onClick={() => {handleSizeClick(index)}} className="text-[#878784] font-light text-base text-center mb-4 border-black border-opacity-80 border-[1px] p-2 rounded-lg cursor-pointer " style={{ border: image === index ? '2px solid #3b3b39' : '1px solid #3b3b39'}}>
+          <p 
+            key={size} 
+            onClick={() => {handleSizeClick(index)}} 
+            className="text-[#878784] font-light text-base text-center mb-4 border-black border-opacity-80 border-[1px] p-2 rounded-lg cursor-pointer" 
+            style={{ border: image === index ? '2px solid #3b3b39' : '1px solid #3b3b39'}}
+          >
             {size} mL
           </p>
         ))}
       </div>
       <div className="grid ">
         <div>
-          <p className="text-[#2e2e2d] text-xl font-[300] font-ysab"><TextWithSpacesAfterWords text={product.description} /></p>
-          <p className="text-[#3b3b39] font-light mt-4 text-2xl text-center ">Price: ${product.price}</p>
-          {/* Add sizes and other details */}
+          <p className="text-[#2e2e2d] text-xl font-[300] font-ysab">
+            <TextWithSpacesAfterWords text={product.description} />
+          </p>
+          <p className="text-[#3b3b39] font-light mt-4 text-2xl text-center">
+            Price: ${product.price}
+          </p>
         </div>
       </div>
       <div className='w-full'>
@@ -78,10 +82,8 @@ const ProductPage = () => {
         <Gallery images={images} />
       </div>
       {/* Reviews Section */}
-      {/* Share Button */}
       <ShareButton url={window.location.href} title={product.name} />
       <Reviews productId={product._id} />
-
     </div>
     </div>
     </div>

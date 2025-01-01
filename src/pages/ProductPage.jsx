@@ -42,11 +42,11 @@ const ProductPage = () => {
     <div className="w-full p-4">
         <div className='w-full h-full'>
           {/* Image section */}
-{/*           <img 
+          <img 
             src={images[image]} 
             alt={product.name} 
             className="w-full h-auto max-w-full" 
-          /> */}
+          />
         </div>
       <p className="text-[2.60rem] text-center font-bello my-8 font-[400] text-[#3b3b39]">{product.name}</p>
       <p className="text-[#878784] font-light text-base text-center mb-4">

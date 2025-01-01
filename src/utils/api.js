@@ -1,7 +1,7 @@
 // src/utils/api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:2000/api';
+const API_URL = 'https://perfum-backend-lrnoro3np-tolpas-projects.vercel.app/api';
 
 export const getProducts = async () => {
   const response = await axios.get(`${API_URL}/products`);

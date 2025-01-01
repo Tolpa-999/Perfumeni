@@ -42,11 +42,11 @@ const ProductPage = () => {
     <div className="w-full p-4">
         <div className='w-full h-full'>
           {/* Image section */}
-          <img 
+{/*           <img 
             src={images[image]} 
             alt={product.name} 
             className="w-full h-auto max-w-full" 
-          />
+          /> */}
         </div>
       <p className="text-[2.60rem] text-center font-bello my-8 font-[400] text-[#3b3b39]">{product.name}</p>
       <p className="text-[#878784] font-light text-base text-center mb-4">
@@ -78,7 +78,7 @@ const ProductPage = () => {
       <div className='w-full'>
         <p className='text-2xl text-[#3b3b39] font-normal mt-5 mb-3'>All images</p>
         <p className='w-[80%] h-[1px] bg-[#3b3b39] mb-5 -mt-2'></p>
-        <Gallery images={images} />
+{/*         <Gallery images={images} /> */}
       </div>
       {/* Reviews Section */}
       <ShareButton url={window.location.href} title={product.name} />

@@ -33,8 +33,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className='w-full flex justify-center'>
-        <div className='container overflow-hidden'>
+        <div className='w-full'>
     <Helmet>
       <title>{product.name} - Perfumeni</title>
       <meta name="description" content={product.description} />
@@ -84,7 +83,6 @@ const ProductPage = () => {
       {/* Reviews Section */}
       <ShareButton url={window.location.href} title={product.name} />
       <Reviews productId={product._id} />
-    </div>
     </div>
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../utils/api';
 import Skeleton from 'react-loading-skeleton';
-import Reviews from '../components/Reviews';
 import Gallery from '../components/Gallery';
 import ShareButton from '../components/ShareButton';
 import { Helmet } from 'react-helmet';
@@ -13,14 +12,14 @@ const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [images, setImages] = useState([]);
   const [image, setImage] = useState(0);
-  
+
   useEffect(() => {
     getProductById(id)
-      .then(data => {
+      .then((data) => {
         setImages(data.data.images);
-        setProduct(data.data)
+        setProduct(data.data);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }, [id]);
 
   if (!product) {
@@ -29,7 +28,7 @@ const ProductPage = () => {
 
   function handleSizeClick(size) {
     // Handle size click logic
-    setImage(size)
+    setImage(size);
   }
 
   return (

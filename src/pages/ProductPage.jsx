@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import { set } from 'react-hook-form';
 import TextWithSpacesAfterWords from '../utils/TextWithSpacesAfterWords';
 import ReviewsPagination from '../components/ReviewsPaginatin';
+import { div } from 'framer-motion/client';
 
 
 const ProductPage = () => {
@@ -41,7 +42,8 @@ const ProductPage = () => {
   }
 
   return (
-    <div className='w-full '>
+    <div className='w-full flex justify-center'>
+        <div className='container overflow-hidden'>
     <Helmet>
       <title>{product.name} - Perfumeni</title>
       <meta name="description" content={product.description} />
@@ -80,6 +82,7 @@ const ProductPage = () => {
       <ShareButton url={window.location.href} title={product.name} />
       <Reviews productId={product._id} />
 
+    </div>
     </div>
     </div>
   );

@@ -26,6 +26,7 @@ const ProductPage = () => {
     return <Skeleton count={1} />;
   }
 
+  console.log('id', id);
   function handleSizeClick(size) {
     // Handle size click logic
     setImage(size);

@@ -60,7 +60,7 @@ const ReviewsPagination = ({ productId }) => {
       {!loading && !error && typeof reviews === "object" && reviews.length > 0 && (
         <ul className="space-y-4">
           {reviews?.map((review) => (
-            <ReviewItem key={review._id} review={review} /> // Render each review
+            <ReviewItem key={review._id} id={productId} review={review} /> // Render each review
           ))}
         </ul>
       )}

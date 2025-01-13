@@ -1,7 +1,7 @@
 // src/utils/api.js
 import axios from 'axios';
 
-const API_URL = 'https://perfum-backend.vercel.app/api';
+const API_URL = 'http://localhost:2000/api';
 
 export const getProducts = async () => {
   const response = await axios.get(`${API_URL}/products`);
@@ -27,10 +27,11 @@ export const addReviewApi = async (productId, reviewData) => {
       `${API_URL}/reviews/${productId}`,
       reviewData
     );
+    console.log(response.data);
     return response.data;
   } catch (error) {
     // Handle errors by throwing them for further handling in the component
-    throw new Error(error.response?.data?.message || "Failed to add review.");
+    throw new Error(error?.response?.data?.message || "Failed to add review.");
   }
 };
 

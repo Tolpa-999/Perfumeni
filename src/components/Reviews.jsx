@@ -25,7 +25,7 @@ const Reviews = ({ productId }) => {
       reset(); // Reset the form
     } catch (error) {
       toast.error(
-        error.response?.data?.message || "An error occurred while submitting the review."
+        error?.message || "An error occurred while submitting the review."
       );
     }
   };

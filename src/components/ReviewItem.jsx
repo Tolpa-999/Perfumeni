@@ -1,28 +1,39 @@
 import React from "react";
 import { toast } from "react-toastify"; // Import toast for notifications
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
-import axios from "axios"; // Import axios to make the API request
 import { deleteReviewApi } from "../utils/api";
+import { useSelector } from "react-redux";
 
 const ReviewItem = ({ review, id }) => {
   // Function to handle the deletion of the review
+
+  const {user} = useSelector((state) => state?.auth);
+
+  console.log('reveiw id => ', review.user, 'user id => ', user._id)
+
+
   const handleDelete = async ({review, id}) => {
     try {
       console.log(review._id, id)
-      const response = await deleteReviewApi(review._id, id);
+      const response = await deleteReviewApi(id, review._id);
       console.log(response)
-      if (response.data.status === "success") {
+      if (response.status === "success") {
 
-        toast.success("Review deleted successfully!", { position: toast.POSITION.TOP_RIGHT });
+        toast.success("Review deleted successfully!");
       }
     } catch (error) {
-      console.log(error)
+      toast.error(
+        error?.message || "An error occurred while deleting the review."
+      );
     }
+    
   };
 
   return (
     <li className="p-3 border-black bg-white border-[.1px] rounded-md shadow-md">
-      <div className="flex justify-between items-center">
+      {
+        review.user == user._id && (
+          <div className="flex justify-between items-center">
         <span className="text-base font-[200] bg-white text-black">
           {new Date(review.createdAt).toLocaleDateString()}
         </span>
@@ -33,6 +44,9 @@ const ReviewItem = ({ review, id }) => {
           Delete
         </button>
       </div>
+        )
+      }
+      
 
       <p className="mt-2 text-gray-800 text-[1.2rem] leading-relaxed font-bello font-[500]">
         {review.comment || "No comment provided."}
@@ -44,7 +58,7 @@ const ReviewItem = ({ review, id }) => {
           <span>{review.rating}</span>
         </span>
         <p className="text-sm font-light text-black">
-          By {review.user || "Anonymous"}
+          By {review.username || "Anonymous"}
         </p>
       </div>
     </li>

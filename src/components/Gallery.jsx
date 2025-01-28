@@ -1,7 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import LazyLoad from 'react-lazyload';
 
 // Code for our gallery component to slide through images
 const Gallery = ({ images }) => {

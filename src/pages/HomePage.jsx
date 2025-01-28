@@ -9,15 +9,19 @@ import Banner from '../components/Banner';
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     getProducts()
       .then(data => {
         setProducts(data.data);
-        setLoading(false);
       })
       .catch(error => {
         console.error(error);
+        // setError(error.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -54,7 +58,7 @@ const HomePage = () => {
               </div>
             ))
         ) : (
-          products.map(product => <ProductCard key={product.id} product={product} />)
+          products.map(product => <ProductCard key={product._id} product={product} />)
         )}
       </motion.div>
     </div>

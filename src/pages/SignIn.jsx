@@ -41,7 +41,7 @@ const SignIn = () => {
       transition={{ duration: 0.6 }}
       className="flex items-start justify-center min-h-screen "
     >
-      {console.log('userdata =>', userdata)}
+      {/* {console.log('userdata =>', userdata)} */}
       <form
         onSubmit={handleSubmit}
         className="p-8 rounded-lg shadow-xl w-full max-w-md mt-20"

@@ -37,7 +37,7 @@ export const addReviewApi = async (productId, reviewData) => {
       `/reviews/${productId}`,
       reviewData
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     // Handle errors by throwing them for further handling in the component
@@ -61,7 +61,7 @@ export const signUp = async (userData) => {
   try {
 
     const response = await axiosInstance.post(`/users/register`, userData);
-    console.log('Sign in data => ', response.data);
+    // console.log('Sign in data => ', response.data);
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -72,7 +72,7 @@ export const signUp = async (userData) => {
 export const signIn = async (credentials) => {
   try {
     const response = await axiosInstance.post(`/users/login`, credentials);
-    console.log('Sign in data => ', response.data);
+    // console.log('Sign in data => ', response.data);
     return response.data;
   } catch (error) {
     // await toast.error(error?.response?.data?.message)

@@ -16,7 +16,7 @@ const Navbar = () => {
   const favorites = useSelector((state) => state?.favorites);
   const cart = useSelector((state) => state?.cart);
 
-  console.log(`favorites from navbar:`, favorites);
+  // console.log(`favorites from navbar:`, favorites);
 
   // Close the menu when the route changes
   useEffect(() => {

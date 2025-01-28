@@ -49,7 +49,7 @@ const EmailVerification = () => {
         {verificationStatus === "success" && (
           <div>
             <p className="text-xl font-bello font-semibold">Email verified <i className="text-green-600">successfully</i> !</p>
-            <p className="text-base font-normal font-yasb"><Link to="/" className=" underline text-base text-blue-700 ">Login </Link> now</p>
+            <p className="text-base font-normal font-yasb"><Link to="/signin" className=" underline text-base text-blue-700 ">Login </Link> now</p>
           </div>
         )} 
         {verificationStatus === "error" && (

@@ -1,66 +1,116 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import ProductCard from '../components/ProductCard';
-import { getProducts } from '../utils/api';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-import Banner from '../components/Banner';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import ProductCard from "../components/ProductCard";
+import { getProducts } from "../utils/api";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import Banner from "../components/Banner";
 
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({
+    mens: [],
+    womens: [],
+    unisex: [],
+  });
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
+  const [expandedCategories, setExpandedCategories] = useState({
+    mens: false,
+    womens: false,
+    unisex: false,
+  });
 
   useEffect(() => {
     setLoading(true);
-    getProducts()
-      .then(data => {
-        setProducts(data.data);
+
+    const fetchCategoryProducts = async (category) => {
+      try {
+        const response = await getProducts({ category, limit: 6 });
+        return response.data;
+      } catch (error) {
+        console.error(`Error fetching ${category} products:`, error);
+        return [];
+      }
+    };
+
+    Promise.all([
+      fetchCategoryProducts("mens"),
+      fetchCategoryProducts("womens"),
+      fetchCategoryProducts("unisex"),
+    ])
+      .then(([mensProducts, womensProducts, unisexProducts]) => {
+        setProducts({
+          mens: mensProducts,
+          womens: womensProducts,
+          unisex: unisexProducts,
+        });
       })
-      .catch(error => {
-        console.error(error);
-        // setError(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .finally(() => setLoading(false));
   }, []);
 
-  // Animation for the grid
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2, // Adds delay between children animations
-      },
-    },
+  const loadMoreProducts = async (category) => {
+    try {
+      const response = await getProducts({ category });
+      setProducts((prev) => ({
+        ...prev,
+        [category]: response.data,
+      }));
+      setExpandedCategories((prev) => ({
+        ...prev,
+        [category]: true,
+      }));
+    } catch (error) {
+      console.error(`Error loading more ${category} products:`, error);
+    }
   };
 
+
   return (
-    <div >
+    <div className="min-h-screen bg-gradient-to-b from-white to-[#F7F3E9] text-gray-900">
       <Banner />
-      <motion.div
-        className="container mx-auto p-4 grid center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {loading ? (
-          Array(6)
-            .fill(0)
-            .map((_, index) => (
-              <div key={index} className="p-4">
-                <Skeleton height={200} />
-                <Skeleton height={20} style={{ marginTop: 10 }} />
-                <Skeleton height={15} width="80%" />
-                <Skeleton height={20} width="40%" style={{ marginTop: 10 }} />
+      {["mens", "womens", "unisex"].map((category) => {
+        const categoryProducts = products[category];
+
+        return (
+          <div key={category} className="container mx-auto my-10 p-6">
+            <h2 className="text-3xl font-semibold text-[#8B6F47] mb-6 text-center capitalize">
+              {category} Collection
+            </h2>
+            <div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+            >
+              {loading
+                ? Array(6)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div key={index} className="p-4">
+                        <Skeleton height={250} />
+                        <Skeleton height={20} style={{ marginTop: 10 }} />
+                        <Skeleton height={15} width="80%" />
+                        <Skeleton height={20} width="40%" style={{ marginTop: 10 }} />
+                      </div>
+                    ))
+                : categoryProducts?.map((product) => (
+                    <div
+                      key={product._id}
+                      className="transition-transform duration-300 flex justify-center"
+                    >
+                      <ProductCard product={product} />
+                    </div>
+                  ))}
+            </div>
+            {categoryProducts?.length === 6 && (
+              <div className="flex justify-center self-center mt-8 ">
+                <button
+                  onClick={() => loadMoreProducts(category)}
+                  className="px-8 py-3 bg-[#C7A17A] text-white text-lg font-medium rounded-lg shadow-md hover:bg-[#AF8A63] transition-all"
+                >
+                  Show More
+                </button>
               </div>
-            ))
-        ) : (
-          products.map(product => <ProductCard key={product._id} product={product} />)
-        )}
-      </motion.div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };

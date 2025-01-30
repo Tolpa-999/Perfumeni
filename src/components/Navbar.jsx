@@ -125,11 +125,16 @@ const Navbar = () => {
                         <FaHeart size={19} className="cursor-pointer font-light" />
                       </Link>
                     </li>
-                    <li>
+                    <li className='relative'>
                       <Link
                         to="/cart"
                         className="hover:text-gray-400"
                       >
+                        {cart.length > 0 && (
+                          <i className="absolute -top-[.9rem] right-[3.2rem] text-xs font-medium font-sans text-white z-50 bg-red-500 w-[.9rem] h-[.9rem] rounded-full text-center" style={{ lineHeight: '.9rem' }}>
+                            {cart.length}
+                          </i>
+                        )}
                         <PiShoppingCartSimple size={20} className="cursor-pointer font-light" />
                       </Link>
                     </li>

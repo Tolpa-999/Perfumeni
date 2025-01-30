@@ -12,10 +12,18 @@ export const axiosInstance = axios.create({
   },
 });
 
-export const getProducts = async () => {
-  const response = await axiosInstance.get(`${API_URL}/products`);
+// export const getProducts = async () => {
+//   const response = await axiosInstance.get(`${API_URL}/products`);
+//   console.log(response.data)
+//   return response.data;
+// };
+
+export const getProducts = async (filters = {}) => {
+  const queryParams = new URLSearchParams(filters).toString();
+  const response = await axiosInstance.get(`${API_URL}/products?${queryParams}`);
   return response.data;
 };
+
 
 export const getProductById = async (id) => {
   const response = await axiosInstance.get(`${API_URL}/products/${id}`);

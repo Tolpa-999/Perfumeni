@@ -22,7 +22,7 @@ const Reviews = ({ productId }) => {
         comment: data.comment,
         rating: parseFloat(data.rating), // Ensure rating is a number
       };
-      console.log(reviewData)
+      // console.log(reviewData)
       const response = await addReviewApi(productId, reviewData);
       toast.success(response.message);
 

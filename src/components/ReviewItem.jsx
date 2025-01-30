@@ -9,14 +9,14 @@ const ReviewItem = ({ review, id }) => {
 
   const {user} = useSelector((state) => state?.auth);
 
-  console.log('reveiw id => ', review.user, 'user id => ', user._id)
+  // console.log('reveiw id => ', review.user, 'user id => ', user._id)
 
 
   const handleDelete = async ({review, id}) => {
     try {
-      console.log(review._id, id)
+      // console.log(review._id, id)
       const response = await deleteReviewApi(id, review._id);
-      console.log(response)
+      // console.log(response)
       if (response.status === "success") {
 
         toast.success("Review deleted successfully!");

@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
       variants={cardVariants}
       initial="hidden"
       animate={'visible'}
-      className="max-md:w-[80%] max-md:my-6 md:m-4 place-self-center rounded-2xl overflow-hidden bg-[#f2f2f4] shadow-lg text-center relative"
+      className="max-md:w-[80%] max-md:my-6 md:m-4 place-self-center rounded-2xl overflow-hidden bg-white shadow-lg text-center relative"
     >
       {/* Link to the product details page */}
       <Link to={`/product/${product._id}`}>

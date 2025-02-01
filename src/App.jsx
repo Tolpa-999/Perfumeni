@@ -22,14 +22,23 @@ import AuthProviders from '../providers/AuthProviders';
 import InteceptorProvider from '../providers/InteceptorProvider';
 import EmailVerification from './pages/EmailVerification';
 import ProtectedRoute from '../providers/ProtectedRoute';
+import Footer from './components/Footer';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
+  const { t } = useTranslation();
   return (
     <ErrorBoundary>
       <Router>
         <Provider store={store}>
           <InteceptorProvider>
             <AuthProviders>
+              <LanguageSwitcher />
+              <header className="mt-4">
+                <h1 className="text-4xl font-bold">{t('welcome')}</h1>
+                <p className="mt-2 text-lg">{t('description')}</p>
+              </header>
               <Navbar />
               {/* Add ToastContainer for global toast notifications */}
               <ToastContainer position="top-right"
@@ -110,12 +119,12 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <FavoritesPage />
-                    </motion.div>
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <FavoritesPage />
+                      </motion.div>
                     </ProtectedRoute>
                   }
                 />
@@ -124,17 +133,18 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <CartPage />
-                    </motion.div>
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        <CartPage />
+                      </motion.div>
                     </ProtectedRoute>
                   }
                 />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
+              <Footer />
             </AuthProviders>
           </InteceptorProvider>
         </Provider>

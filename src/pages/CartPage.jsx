@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity, clearCart } from '../store/slices/cartSlice';
 import CartProductCard from '../components/CartProductCard';
+import { t } from 'i18next';
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cart);
@@ -24,15 +25,16 @@ const CartPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-6">
-      <h1 className="text-4xl font-bold text-center text-black p-8 mb-7 font-bello bg-gray-100">
-        Your Cart
+    <>
+      <h1 className=" font-normal text-center p-8 mb-7 font-bello bg-[#f9f7f6]  text-4xl text-[#ae8b51]">
+        {t('yourCart')}
       </h1>
-
+    <div className="min-h-screen p-6  bg-[white] mb-1">
+      
       {cart.length === 0 ? (
         <div className="text-center text-black font-normal mt-20">
-          <p className="text-2xl">Your cart is empty.</p>
-          <p className="text-lg mt-2">Add some products to get started.</p>
+          <p className="text-2xl">{t('noCart')}</p>
+          <p className="text-lg mt-2">{t('addCart')}</p>
         </div>
       ) : (
         <>
@@ -47,21 +49,22 @@ const CartPage = () => {
             ))}
           </div>
 
-          <div className="mt-8 p-4 bg-white shadow-md rounded-lg">
+          <div className="mt-8 p-4 bg-white shadow-xl rounded-lg border-slate-200 border">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">Total Price</h2>
-              <span className="text-lg font-bold text-gray-800">${calculateTotalPrice()}</span>
+              <h2 className="text-lg font-normal">{t('total')}</h2>
+              <span className="text-lg font-normal text-gray-800">${calculateTotalPrice()}</span>
             </div>
             <button
               onClick={handleClearCart}
-              className="w-full mt-4 bg-red-600 text-white py-2 rounded-md font-medium hover:bg-red-700 transition-colors"
+              className="w-full mt-4 bg-red-600 text-white py-2 rounded-md font-medium active:scale-[98%] duration-300 transition-all"
             >
-              Clear Cart
+              {t('clearCart')}
             </button>
           </div>
         </>
       )}
     </div>
+    </>
   );
 };
 

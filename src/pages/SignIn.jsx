@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {login} from '../store/slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import { t } from 'i18next';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -46,9 +47,9 @@ const SignIn = () => {
         onSubmit={handleSubmit}
         className="p-8 rounded-lg shadow-xl w-full max-w-md mt-20"
       >
-        <h2 className="text-3xl font-bello font-normal text-black mb-6">Sign In</h2>
+        <h2 className="text-3xl font-bello font-normal text-black mb-6">{t('signin')}</h2>
         <div className="mb-4">
-          <label className="block text-[rgb(59,59,57)] font-ysab mb-2 font-semibold">Email</label>
+          <label className="block text-[rgb(59,59,57)] font-ysab mb-2 font-semibold">{t('email')}</label>
           <input
             type="email"
             value={email}
@@ -58,7 +59,7 @@ const SignIn = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">Password</label>
+          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('password')}</label>
           <input
             type="password"
             value={password}
@@ -72,10 +73,10 @@ const SignIn = () => {
           disabled={loading}
           className="w-full bg-[#ae8b51] text-white py-2 rounded-lg hover:scale hover:bg-[#9f7a41] transition-all"
         >
-          {loading ? 'Signing In...' : 'Sign In'}
+          {loading ? t('signinButton') : t('signin')}
         </button>
         <div className='text-center mt-4'>
-          <p className='mt-4 font-light text-base'>Don't have an account ? <Link to={"/sign-up"} className="text-black text-center underline">Sign Up</Link></p>
+          <p className='mt-4 font-light text-base'>{t('not')} <Link to={"/sign-up"} className="text-black text-center underline">{t('signup')}</Link></p>
         </div>
         
       </form>

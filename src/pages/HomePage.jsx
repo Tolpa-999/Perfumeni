@@ -5,6 +5,7 @@ import { getProducts } from "../utils/api";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Banner from "../components/Banner";
+import { t } from "i18next";
 
 const HomePage = () => {
   const [products, setProducts] = useState({
@@ -65,15 +66,17 @@ const HomePage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#F7F3E9] text-gray-900">
-      <Banner />
+    <>
+    <Banner />
+      <div className="min-h-screen bg-[white] text-gray-900 ">
+      
       {["mens", "womens", "unisex"].map((category) => {
         const categoryProducts = products[category];
 
         return (
-          <div key={category} className="container mx-auto my-10 p-6">
+          <div key={category} className="container mx-auto my-1 p-6">
             <h2 className="text-3xl font-semibold text-[#8B6F47] mb-6 text-center capitalize">
-              {category} Collection
+              {t('mens')}
             </h2>
             <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
@@ -104,7 +107,7 @@ const HomePage = () => {
                   onClick={() => loadMoreProducts(category)}
                   className="px-8 py-3 bg-[#C7A17A] text-white text-lg font-medium rounded-lg shadow-md hover:bg-[#AF8A63] transition-all"
                 >
-                  Show More
+                  {t('show')}
                 </button>
               </div>
             )}
@@ -112,6 +115,7 @@ const HomePage = () => {
         );
       })}
     </div>
+    </>
   );
 };
 

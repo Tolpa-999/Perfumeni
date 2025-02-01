@@ -3,6 +3,7 @@ import { refreshToken } from '../src/utils/api';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { login } from '../src/store/slices/authSlice';
+import LoadingPage from '../src/pages/LoadingPage';
 
 const AuthProviders = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +26,7 @@ const AuthProviders = ({ children }) => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Replace with a loading spinner
+    return <LoadingPage/>; // Replace with a loading spinner
   }
 
   return children;

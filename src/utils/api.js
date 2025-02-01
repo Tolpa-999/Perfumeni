@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const API_URL = 'https://perfum-backend.vercel.app/api';
+const API_URL = 'http://localhost:2000/api';
 
 export const axiosInstance = axios.create({
   baseURL: API_URL,

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { signUp } from '../utils/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { t } from 'i18next';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -16,7 +17,7 @@ const SignUp = () => {
     setLoading(true);
     try {
       const response = await signUp({ username, email, password });
-      toast.success('Signed up successfully!');
+      toast.success('Signed up successfully please verify your email!');
       navigate('/signin'); // Redirect to sign-in page
     } catch (error) {
       toast.error(error.message || 'Sign-up failed. Please try again.');
@@ -36,9 +37,9 @@ const SignUp = () => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-20"
       >
-        <h2 className="text-3xl font-bello font-normal text-black mb-6">Sign Up</h2>
+        <h2 className="text-3xl font-bello font-normal text-black mb-6">{t('signup')}</h2>
         <div className="mb-4">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">Username</label>
+          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('username')}</label>
           <input
             type="text"
             value={username}
@@ -48,7 +49,7 @@ const SignUp = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">Email</label>
+          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('email')}</label>
           <input
             type="email"
             value={email}
@@ -58,7 +59,7 @@ const SignUp = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">Password</label>
+          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('password')}</label>
           <input
             type="password"
             value={password}
@@ -72,10 +73,10 @@ const SignUp = () => {
           disabled={loading}
           className="w-full bg-[#ae8b51] text-white py-2 rounded-lg hover:bg-[#9f7a41] transition-all"
         >
-          {loading ? 'Signing Up...' : 'Sign Up'}
+          {loading ? t('signupButtonLoading') : t('signupButton')}
         </button>
         <div className='text-center mt-4'>
-          <p className='mt-4 font-light text-base'>Already have an account ? <Link to={"/signin"} className="text-black text-center underline">Sign In</Link></p>
+          <p className='mt-4 font-light text-base'>{t('already')} <Link to={"/signin"} className="text-black text-center underline">{t('signin')}</Link></p>
         </div>
       </form>
     </motion.div>

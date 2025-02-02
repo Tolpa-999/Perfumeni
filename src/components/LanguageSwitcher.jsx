@@ -1,5 +1,6 @@
 // src/components/LanguageSwitcher.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 const LanguageSwitcher = () => {
@@ -12,19 +13,29 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="flex gap-4">
-      <button
+    <div className="flex gap-4 items-center">
+      <motion.button
         onClick={() => changeLanguage('en')}
-        className={`px-3 py-1 border rounded ${i18n.language === 'en' ? 'bg-gray-200' : 'text-white'}`}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className={`px-4 py-2 rounded-full border transition-colors duration-300 text-sm
+          ${i18n.language === 'en' 
+            ? 'bg-[#ae8b51] text-white border-[#ae8b51]' 
+            : 'bg-transparent text-[#ae8b51] border-[#ae8b51]'}`}
       >
         English
-      </button>
-      <button
+      </motion.button>
+      <motion.button
         onClick={() => changeLanguage('ar')}
-        className={`px-3 py-1 border rounded ${i18n.language === 'ar' ? 'bg-gray-200' : 'text-white'}`}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className={`px-4 py-2 rounded-full border transition-colors duration-300 text-sm
+          ${i18n.language === 'ar' 
+            ? 'bg-[#ae8b51] text-white border-[#ae8b51]' 
+            : 'bg-transparent text-[#ae8b51] border-[#ae8b51]'}`}
       >
         العربية
-      </button>
+      </motion.button>
     </div>
   );
 };

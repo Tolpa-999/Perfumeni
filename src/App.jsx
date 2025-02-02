@@ -34,11 +34,6 @@ function App() {
         <Provider store={store}>
           <InteceptorProvider>
             <AuthProviders>
-              <LanguageSwitcher />
-              <header className="mt-4">
-                <h1 className="text-4xl font-bold">{t('welcome')}</h1>
-                <p className="mt-2 text-lg">{t('description')}</p>
-              </header>
               <Navbar />
               {/* Add ToastContainer for global toast notifications */}
               <ToastContainer position="top-right"

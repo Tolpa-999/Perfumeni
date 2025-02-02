@@ -8,6 +8,7 @@ import TextWithSpacesAfterWords from '../utils/TextWithSpacesAfterWords';
 import Reviews from '../components/Reviews';
 import SwipeImageNavigator from '../components/SwipeImageNavigator';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -17,6 +18,9 @@ const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [feedback, setFeedback] = useState(null); // For action feedback
+
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
 
   useEffect(() => {
     setLoading(true);
@@ -86,8 +90,8 @@ const ProductPage = () => {
         </p>
         <p className="text-[#878784] font-light text-base text-center mb-4">
           {product.sizes.length > 0
-            ? `Available in ${product.sizes.length} sizes`
-            : 'Available in one size'}
+            ? `${t('manySizes')} ${product.sizes.length}  ${t('sizes')}`
+            : t('oneSize')}
         </p>
 
         {/* Size Selection */}
@@ -103,7 +107,7 @@ const ProductPage = () => {
               }`}
               aria-label={`Select size ${size} mL`}
             >
-              {size} mL
+              {size} {t('ml')}
             </button>
           ))}
         </div>

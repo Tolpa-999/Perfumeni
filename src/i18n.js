@@ -39,6 +39,10 @@ const resources = {
             unisex: "Unisex Collection",
             show: "Show More",
             luxury: "Your luxury perfume destination.",
+            ml: "mL",
+            oneSize: "avialable in one size",
+            manySizes: "avialable in ",
+            sizes: " sizes",
             links: "Quick Links",
             support: "Customer Support",
             about: "About Us",
@@ -78,7 +82,7 @@ const resources = {
             noFavourite: "لا توجد عطور مفضله حتى الآن.",
             browse: "تصفح العطور وأضفها إلى المفضلة الخاصة بك.",
             logout: "تسجيل الخروج",
-            explore: "تصفح أحدث مجموعات لدينا",
+            explore: "تصفح أحدث مجموعات العطور لدينا",
             scroll: "مرر إلى الأسفل لإكتشاف المزيد",
             shop: "تسوق الان",
             mens: "مجموعة الرجال",
@@ -86,6 +90,10 @@ const resources = {
             unisex: " مجموعة ل الرجال والنساء",
             show: "عرض المزيد",
             luxury: "وجهتك للعطور الفاخرة.",
+            oneSize: "متوفر في حجم واحد",
+            manySizes: "متوفر في ",
+            sizes: "أحجام",
+            ml: "ملي",
             links: "روابط",
             support: "دعم العملاء",
             about: "عنا",
@@ -100,15 +108,16 @@ const resources = {
     }
 };
 
-i18n
-    .use(initReactI18next)
-    .init({
-        resources,
-        lng: 'en', // default language
-        fallbackLng: 'en',
-        interpolation: {
-            escapeValue: false, // React already escapes values
-        }
-    });
+const savedLanguage = localStorage.getItem('i18nextLng') || 'en';
 
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng: savedLanguage,
+    fallbackLng: 'en', // fallback language in case translation is missing
+    interpolation: {
+      escapeValue: false, // React already does escaping
+    }
+  });
 export default i18n;

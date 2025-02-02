@@ -10,6 +10,8 @@ module.exports = {
         Agu: ['"Agu Display"', 'serif'], // Custom font
         bello: ['"Bellota"', 'italic'],
         ysab: ['"Ysabeau SC"', 'sans-serif'],
+        cairo: ['"Cairo"', 'sans-serif'],
+        mada: ['"Mada"', 'sans-serif'],
       },
     },
   },

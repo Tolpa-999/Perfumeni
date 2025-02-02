@@ -5,9 +5,13 @@ import { getProducts } from "../utils/api";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Banner from "../components/Banner";
-import { t } from "i18next";
+import {useTranslation } from "react-i18next";
 
 const HomePage = () => {
+
+  const { i18n, t} = useTranslation();
+    const isEnglish = i18n.language === 'en';
+
   const [products, setProducts] = useState({
     mens: [],
     womens: [],
@@ -75,8 +79,8 @@ const HomePage = () => {
 
         return (
           <div key={category} className="container mx-auto my-1 p-6">
-            <h2 className="text-3xl font-semibold text-[#8B6F47] mb-6 text-center capitalize">
-              {t('mens')}
+            <h2 className={`text-3xl font-medium ${isEnglish ? 'font-ysab' : 'font-cairo'} text-[#8B6F47] mb-6 text-center capitalize`}>
+              {t(category)}
             </h2>
             <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"

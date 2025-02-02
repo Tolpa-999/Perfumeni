@@ -104,7 +104,8 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="hover:text-gray-400 font-ysab text-lg font-normal"
+                        className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal`}
+                        
                       >
                         {t('home')}
                       </Link>
@@ -112,7 +113,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         to="/"
-                        className="hover:text-gray-400 font-ysab text-lg font-normal"
+                        className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal`}
                       >
                         {t('products')}
                       </Link>
@@ -145,7 +146,7 @@ const Navbar = () => {
                     </li>
                     <li onClick={handleLogout}>
                       <p
-                        className="hover:text-gray-400 font-ysab text-lg font-normal cursor-pointer"
+                        className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal cursor-pointer`}
                       >
                         {t('logout')}
                       </p>
@@ -162,14 +163,14 @@ const Navbar = () => {
           {/* Regular Navbar Items for Larger Screens */}
           <ul className="hidden md:flex space-x-3 items-center gap-5">
             <li>
-              <Link to="/" className="hover:text-gray-400 font-ysab text-lg font-medium">
+              <Link to="/" className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-medium`}>
               {t('home')}
               </Link>
             </li>
             <li>
               <Link
                 to="/"
-                className="hover:text-gray-400 font-ysab text-lg font-medium"
+                className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-medium`}
               >
                 {t('products')}
               </Link>
@@ -199,7 +200,7 @@ const Navbar = () => {
             </li>
             <li>
               <p
-                className="hover:text-gray-400 font-ysab text-lg font-normal cursor-pointer" onClick={handleLogout}
+                className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-medium cursor-pointer`} onClick={handleLogout}
               >
                 {t('logout')}
               </p>

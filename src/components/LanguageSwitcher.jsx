@@ -8,12 +8,13 @@ const LanguageSwitcher = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    localStorage.setItem('i18nextLng', lng);
     // Update document direction if Arabic is selected
     document.documentElement.dir = lng === 'ar' ? 'rtl' : 'ltr';
   };
 
   return (
-    <div className="flex gap-4 items-center flex-col">
+    <div className="flex gap-4 items-center max-md:flex-col">
       <motion.button
         onClick={() => changeLanguage('en')}
         whileHover={{ scale: 1.1 }}

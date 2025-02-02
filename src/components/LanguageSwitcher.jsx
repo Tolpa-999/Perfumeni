@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center flex-col">
       <motion.button
         onClick={() => changeLanguage('en')}
         whileHover={{ scale: 1.1 }}

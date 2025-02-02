@@ -151,8 +151,8 @@ const Navbar = () => {
                       </p>
                     </li>
                     <div className="mx-3">
-                  <LanguageSwitcher />
-                </div>
+                      <LanguageSwitcher />
+                    </div>
                   </ul>
                 </div>
               </motion.div>

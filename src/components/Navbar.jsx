@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout as logoutApi } from '../utils/api';
 import { logout } from '../store/slices/authSlice';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

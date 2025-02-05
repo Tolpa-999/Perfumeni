@@ -34,7 +34,7 @@ const Banner = () => {
 
       {/* Interactive Button */}
       <button
-        className={`relative z-10 mt-2  bg-white text-black rounded-lg border font-light transition-all duration-300 ease-in-out hover:border-black -bottom-5 ${isEnglish ? 'font-bello px-4 py-2' : 'font-cairo font-[500] px-2 py-1'} `}
+        className={`relative z-10 mt-2  bg-white text-black rounded-lg border font-light transition-all duration-300 ease-in-out hover:border-black -bottom-5 px-4 py-2 ${isEnglish ? 'font-bello' : 'font-cairo font-[500]'} `}
       >
         {t('shop')}
       </button>

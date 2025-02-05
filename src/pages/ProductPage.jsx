@@ -90,7 +90,7 @@ const ProductPage = () => {
         </p>
         <p className="text-[#878784] font-light text-base text-center mb-4">
           {product.sizes.length > 0
-            ? `${t('manySizes')} ${product.sizes.length}  ${t('sizes')}`
+            ? `${t('manySizes', { sizes: product.sizes.length })}`
             : t('oneSize')}
         </p>
 
@@ -122,12 +122,12 @@ const ProductPage = () => {
             <TextWithSpacesAfterWords text={product.description} />
           </p>
           <p className="text-[#3b3b39] font-light mt-4 text-2xl text-center">
-            Price: ${product.price}
+            {t('price', { price: product.price })}
           </p>
         </div>
 
         <div className="w-full h-full mt-6">
-          <p className="text-2xl text-[#3b3b39] font-normal mb-3">All Images</p>
+          <p className={`text-2xl text-[#3b3b39] font-normal  mb-3`}>{t('all_images')}</p>
           <div className="w-[80%] h-[1px] bg-[#3b3b39] mb-5 -mt-2"></div>
           <SwipeImageNavigator images={images} />
         </div>

@@ -112,7 +112,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/products"
                         className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal`}
                       >
                         {t('products')}
@@ -169,7 +169,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/products"
                 className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-medium`}
               >
                 {t('products')}

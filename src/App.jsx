@@ -24,7 +24,7 @@ import EmailVerification from './pages/EmailVerification';
 import ProtectedRoute from '../providers/ProtectedRoute';
 import Footer from './components/Footer';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from './components/LanguageSwitcher';
+import ProductsPage from './pages/ProductPage2';
 
 function App() {
   const { t } = useTranslation();
@@ -106,6 +106,18 @@ function App() {
                       exit={{ opacity: 0 }}
                     >
                       <ProductPage />
+                    </motion.div>
+                  }
+                />
+                <Route
+                  path="/products"
+                  element={
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <ProductsPage />
                     </motion.div>
                   }
                 />

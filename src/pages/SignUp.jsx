@@ -4,6 +4,7 @@ import { signUp } from '../utils/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -11,6 +12,9 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { i18n, t} = useTranslation();
+  const isEnglish = i18n.language === 'en';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,9 +41,9 @@ const SignUp = () => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mt-20"
       >
-        <h2 className="text-3xl font-bello font-normal text-black mb-6">{t('signup')}</h2>
+        <h2 className={`text-3xl font-bello font-normal text-black mb-6 ${isEnglish ? 'font-bello' : 'font-cairo font-[300]'}`}>{t('signup')}</h2>
         <div className="mb-4">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('username')}</label>
+          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello font-semibold ' : 'font-cairo font-[300]'}`}>{t('username')}</label>
           <input
             type="text"
             value={username}
@@ -49,7 +53,7 @@ const SignUp = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('email')}</label>
+          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello font-semibold ' : 'font-cairo font-[300]'}`}>{t('email')}</label>
           <input
             type="email"
             value={email}
@@ -59,7 +63,7 @@ const SignUp = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-[#3b3b39] font-ysab mb-2 font-semibold">{t('password')}</label>
+          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello font-semibold ' : 'font-cairo font-[300]'}`}>{t('password')}</label>
           <input
             type="password"
             value={password}

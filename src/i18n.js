@@ -41,7 +41,7 @@ const resources = {
             luxury: "Your luxury perfume destination.",
             ml: "mL",
             oneSize: "avialable in one size",
-            manySizes: "avialable in ",
+            manySizes: `avialable in {{sizes}} sizes `,
             sizes: " sizes",
             links: "Quick Links",
             support: "Customer Support",
@@ -51,7 +51,36 @@ const resources = {
             terms: "Terms Of Service",
             subscribe: "Subscribe",
             placeholder: "Subscribe To Our Newsletter",
-            rights: " Perfumeni. All rights reserved."
+            rights: " Perfumeni. All rights reserved.",
+            search_products: "Search products",
+            sort_by: "Sort By",
+            price_low_to_high: "Price: Low to High",
+            price_high_to_low: "Price: High to Low",
+            top_rated: "Top Rated",
+            newest: "Newest", 
+            min_price: "Min Price",
+            max_price: "Max Price",
+            minimum_rating: "Minimum Rating",
+            stars: "Stars",
+            apply_filters: "Apply Filters",
+            reset_filters: "Reset Filters",
+            previous: "Previous",
+            next: "Next",
+            price: "Price: ${{price}}",
+            all_images: "All Images",
+            share: "Share",
+            by: "By",
+            date: "Date",
+            reviews: "Reviews",
+            no_reviews: "No reviews yet.",
+            submit_review: "Submit Review",
+            to_add_review: "To Add Review",
+            select_rating: "Select Rating",
+            bad: "Bad",
+            fair: "Fair",
+            good: "Good",
+            very_good: "Very Good",
+            perfect: "Perfect",
             // ... add more keys as needed
         }
     },
@@ -91,7 +120,7 @@ const resources = {
             show: "عرض المزيد",
             luxury: "وجهتك للعطور الفاخرة.",
             oneSize: "متوفر في حجم واحد",
-            manySizes: "متوفر في ",
+            manySizes: " متوفر في {{sizes}} أحجام",
             sizes: "أحجام",
             ml: "ملي",
             links: "روابط",
@@ -102,7 +131,36 @@ const resources = {
             terms: "شروط الخدمة",
             subscribe: "اشترك",
             placeholder: "اشترك في قائمة النشرة البريدية",
-            rights: " Perfumeni. جميع الحقوق محفوظة."
+            rights: " Perfumeni. جميع الحقوق محفوظة.",
+            search_products: "ابحث عن منتجات",
+            sort_by: "ترتيب بواسطة",
+            price_low_to_high: "السعر من الاقل للاعلى",
+            price_high_to_low: "السعر من الاعلى للاقل",
+            top_rated: "الاعلى تقييما",
+            newest: "الاحدث", 
+            min_price: "الأقل سعرا",
+            max_price: "الأعلى سعرا",
+            minimum_rating: "الأقل تقييما",
+            stars: "النجوم",
+            reset_filters: "اعادة تعيين الفلاتر",
+            apply_filters: "تطبيق الفلاتر",
+            previous: "السابق",
+            next: "التالي",
+            price: "السعر: {{price}}$",
+            all_images: "جميع الصور",
+            share: "مشاركة",
+            by: "بواسطة",
+            date: "التاريخ",
+            reviews: "التقييمات",
+            no_reviews: "لا يوجد تقييمات حتى الآن.",
+            submit_review: "إضافة تقييم",
+            to_add_review: "لإضافة تقييم",
+            select_rating: "إختر التقييم",
+            bad: "سيء",
+            fair: "متوسط",
+            good: "جيد",
+            very_good: "جيد جدا",
+            perfect: "ممتاز",
             // ... add more keys as needed
         }
     }
@@ -110,11 +168,14 @@ const resources = {
 
 const savedLanguage = localStorage.getItem('i18nextLng') || 'en';
 
+document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr'
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
     lng: savedLanguage,
+    dir: savedLanguage === 'ar' ? 'rtl' : 'ltr',
     fallbackLng: 'en', // fallback language in case translation is missing
     interpolation: {
       escapeValue: false, // React already does escaping

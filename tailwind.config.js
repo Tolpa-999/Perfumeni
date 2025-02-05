@@ -6,6 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        gold: {
+          500: '#C7A17A',
+          600: '#AF8A63',
+        },
+        cream: {
+          50: '#F9F6F0',
+          100: '#F2ECE1',
+        }
+      },
       fontFamily: {
         Agu: ['"Agu Display"', 'serif'], // Custom font
         bello: ['"Bellota"', 'italic'],

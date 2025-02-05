@@ -7,6 +7,7 @@ import { addReviewApi } from "../utils/api";
 import ReviewsPagination from "./ReviewsPaginatin";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { t } from "i18next";
 
 const Reviews = ({ productId }) => {
   const { register, handleSubmit, reset } = useForm();
@@ -44,8 +45,8 @@ const Reviews = ({ productId }) => {
 
   return (
     <div className="reviews-wrapper">
-      <h2 className="text-2xl text-[#3b3b39] font-semibold mt-5 mb-3">
-        Reviews
+      <h2 className="text-2xl text-[#3b3b39] font-semibold mt-5 mb-3 font-bello">
+        {t('reviews')}
       </h2>
       {/* Pass refreshCounter and triggerRefresh callback to ReviewsPagination */}
       <ReviewsPagination
@@ -69,27 +70,27 @@ const Reviews = ({ productId }) => {
               defaultValue=""
             >
               <option value="" disabled>
-                Select a rating
+                {t('select_rating')}
               </option>
-              <option value="1">1 - Poor</option>
-              <option value="2">2 - Fair</option>
-              <option value="3">3 - Good</option>
-              <option value="4">4 - Very Good</option>
-              <option value="5">5 - Excellent</option>
+              <option value="1">1 - {t('bad')}</option>
+              <option value="2">2 - {t('fair')}</option>
+              <option value="3">3 - {t('good')}</option>
+              <option value="4">4 - {t('very_good')}</option>
+              <option value="5">5 - {t('perfect')}</option>
             </select>
             <button
               type="submit"
-              className="bg-white text-black px-4 py-2 rounded mt-2 border hover:bg-gray-100 transition-all duration-100"
+              className="bg-white text-black px-4 py-2 rounded mt-2 border hover:bg-gray-100 transition-all duration-100 border-black"
             >
-              Submit Review
+              {t('submit_review')}
             </button>
           </>
         ) : (
           <div className="text-black text-center font-sans font-medium text-lg">
-            <Link className="underline font-bold" to="/signin">
-              Sign in
-            </Link>{" "}
-            to add a review
+            <Link className="underline font-bold m-2" to="/signin">
+              {t('signin')}
+            </Link>
+            {t('to_add_review')}
           </div>
         )}
       </form>

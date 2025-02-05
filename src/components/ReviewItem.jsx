@@ -27,19 +27,19 @@ const ReviewItem = ({ review, productId, triggerRefresh }) => {
   return (
     <li className="p-3 border border-black bg-white rounded-md shadow-md">
       {/* Display delete button if the review belongs to the logged-in user */}
-      {review.user === user._id && (
         <div className="flex justify-between items-center">
           <span className="text-base font-light bg-white text-black">
             {new Date(review.createdAt).toLocaleDateString()}
           </span>
+          {review.user === user._id && (
           <button
             onClick={handleDelete}
             className="text-black bg-white border border-black text-sm font-light"
           >
             Delete
           </button>
-        </div>
       )}
+      </div>
       <p className="mt-2 text-gray-800 text-xl leading-relaxed font-light">
         {review.comment || "No comment provided."}
       </p>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify'; // Importing toast function
 
@@ -55,7 +56,7 @@ const ShareButton = ({ url, title }) => {
         onClick={() => setShowMenu((prev) => !prev)}
         className="bg-[white] text-black px-4 py-2 rounded mt-2 border-black hover:bg-[#f5f5f5] transition-all duration-[.3s] "
       >
-        Share
+        {t('share')}
       </button>
       {showMenu && (
         <div className="absolute mt-2 bg-white border rounded shadow-lg z-10">

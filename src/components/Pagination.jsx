@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Pagination = React.memo(({ currentPage, totalPages, onPageChange }) => {
+  const { i18n, t} = useTranslation();
+    const isEnglish = i18n.language === 'en';
   // Helper to generate page numbers dynamically
   const generatePageNumbers = (total) =>
     Array.from({ length: total }, (_, i) => i + 1);
@@ -13,11 +16,11 @@ const Pagination = React.memo(({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 bg-white border border-black text-black rounded transition-all duration-200 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-3 py-1 mx-1 bg-white border border-black text-black rounded transition-all duration-200 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Go to previous page"
         rel="nofollow"
       >
-        Prev
+        {t('previous')}
       </button>
 
       {generatePageNumbers(totalPages).map((page) => (
@@ -40,11 +43,11 @@ const Pagination = React.memo(({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 border border-black bg-white text-black rounded transition-all duration-200 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-3 py-1 mx-1 border border-black bg-white text-black rounded transition-all duration-200 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
         aria-label="Go to next page"
         rel="nofollow"
       >
-        Next
+        {t('next')}
       </button>
 
       {/* Announce page changes for screen readers */}

@@ -19,6 +19,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
+  margin-top: -23px;
+  box-sizing: border-box;
 }
 
 a {

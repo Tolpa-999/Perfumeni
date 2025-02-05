@@ -31,7 +31,7 @@ const ReviewItem = ({ review, productId, triggerRefresh }) => {
           <span className="text-base font-light bg-white text-black">
             {new Date(review.createdAt).toLocaleDateString()}
           </span>
-          {review.user === user._id && (
+          {review?.user === user?._id && (
           <button
             onClick={handleDelete}
             className="text-black bg-white border border-black text-sm font-light"

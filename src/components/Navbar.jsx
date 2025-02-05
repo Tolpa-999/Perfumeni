@@ -54,7 +54,7 @@ const Navbar = () => {
       animate={{ opacity: 1 }}
       className="p-4 bg-[white] mb-1"
     >
-      <nav className="p-4 text-[#3b3b39]">
+      <nav className="text-[#3b3b39]">
         <div className="container mx-auto flex justify-between items-center flex-row-reverse">
           {/* Logo */}
           <h1

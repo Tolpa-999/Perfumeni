@@ -25,7 +25,7 @@ const CartPage = () => {
   };
 
   return (
-    <>
+    <div className='container'>
       <h1 className=" font-normal text-center p-8 mb-7 font-bello bg-[#f9f7f6]  text-4xl text-[#ae8b51]">
         {t('yourCart')}
       </h1>
@@ -64,7 +64,7 @@ const CartPage = () => {
         </>
       )}
     </div>
-    </>
+    </div>
   );
 };
 

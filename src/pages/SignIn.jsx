@@ -53,7 +53,7 @@ const SignIn = () => {
       >
         <h2 className={`text-3xl font-bello font-normal text-black mb-6 ${isEnglish ? 'font-bello' : 'font-cairo font-[300]'}`}>{t('signin')}</h2>
         <div className="mb-4">
-          <label className={`block text-[rgb(59,59,57)] font-ysab mb-2 font-semibold ${isEnglish ? 'font-bello' : 'font-mada font-[200]'}`}>{t('email')}</label>
+          <label className={`block text-[rgb(59,59,57)] font-ysab mb-2 ${isEnglish ? 'font-bello' : 'font-mada font-[200]'}`}>{t('email')}</label>
           <input
             type="email"
             value={email}
@@ -63,7 +63,7 @@ const SignIn = () => {
           />
         </div>
         <div className="mb-6">
-          <label className={`block text-[#3b3b39] font-ysab mb-2 font-semibold ${isEnglish ? 'font-bello' : 'font-cairo font-[200]'}`}>{t('password')}</label>
+          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello' : 'font-cairo font-[200]'}`}>{t('password')}</label>
           <input
             type="password"
             value={password}

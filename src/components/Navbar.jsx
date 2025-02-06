@@ -144,13 +144,17 @@ const Navbar = () => {
                         <PiShoppingCartSimple size={20} className="cursor-pointer font-light" />
                       </Link>
                     </li>
-                    <li onClick={handleLogout}>
-                      <p
-                        className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal cursor-pointer`}
-                      >
-                        {t('logout')}
-                      </p>
-                    </li>
+                    {
+                      auth.isAuthenticated && (
+                        <li onClick={handleLogout}>
+                        <p
+                          className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-normal cursor-pointer`}
+                        >
+                          {t('logout')}
+                        </p>
+                      </li>
+                      )
+                    }
                     <div className="mx-3">
                       <LanguageSwitcher />
                     </div>
@@ -198,13 +202,17 @@ const Navbar = () => {
                 <PiShoppingCartSimple size={20} className="cursor-pointer font-light" />
               </Link>
             </li>
-            <li>
+            {
+              auth.isAuthenticated && (
+                <li>
               <p
                 className={`hover:text-gray-400 ${isEnglish ? 'font-ysab' : 'font-cairo'} text-lg font-medium cursor-pointer`} onClick={handleLogout}
               >
                 {t('logout')}
               </p>
             </li>
+              )
+            }
             <div className="m-6">
                   <LanguageSwitcher />
             </div>

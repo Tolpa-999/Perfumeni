@@ -5,7 +5,6 @@ import { login } from '../src/store/slices/authSlice';
 
 const InteceptorProvider = ({children}) => {
     const {user, accessToken} = useSelector((state) => state?.auth);
-    // console.log(user, accessToken)
 
     const dispatch = useDispatch();
 
@@ -33,7 +32,6 @@ const InteceptorProvider = ({children}) => {
                     const response = await refreshToken();
                     const {user, accessToken} = response.data;
                     dispatch(login({user, accessToken}));
-                    // console.log('user, accesstToken',user, accessToken)
                     originalRequest.headers.Authorization = `Bearer ${accessToken}`;
                     return axiosInstance(originalRequest);
                 } catch (refreshError) {

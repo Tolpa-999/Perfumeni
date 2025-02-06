@@ -16,7 +16,7 @@ const AuthProviders = ({ children }) => {
         const { accessToken, user } = response.data;
         dispatch(login({ accessToken, user }));
       } catch (error) {
-        toast.error(error?.message || 'Failed to refresh session.');
+        // toast.error(error?.message || 'Failed to refresh session.');
       } finally {
         setIsLoading(false);
       }

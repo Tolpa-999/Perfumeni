@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { signUp } from '../utils/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 const SignUp = () => {

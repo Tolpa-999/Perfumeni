@@ -46,14 +46,13 @@ const SignIn = () => {
       transition={{ duration: 0.6 }}
       className="flex items-start justify-center min-h-screen "
     >
-      {/* {console.log('userdata =>', userdata)} */}
       <form
         onSubmit={handleSubmit}
         className="p-8 rounded-lg shadow-xl w-full max-w-md mt-20"
       >
         <h2 className={`text-3xl font-bello font-normal text-black mb-6 ${isEnglish ? 'font-bello' : 'font-cairo font-[300]'}`}>{t('signin')}</h2>
         <div className="mb-4">
-          <label className={`block text-[rgb(59,59,57)] font-ysab mb-2 ${isEnglish ? 'font-bello' : 'font-mada font-[200]'}`}>{t('email')}</label>
+          <label className={`block text-[rgb(59,59,57)] font-ysab mb-2 ${isEnglish ? 'font-bello font-semibold' : 'font-mada font-[200]'}`}>{t('email')}</label>
           <input
             type="email"
             value={email}
@@ -63,7 +62,7 @@ const SignIn = () => {
           />
         </div>
         <div className="mb-6">
-          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello' : 'font-cairo font-[200]'}`}>{t('password')}</label>
+          <label className={`block text-[#3b3b39] font-ysab mb-2 ${isEnglish ? 'font-bello font-semibold' : 'font-cairo font-[200]'}`}>{t('password')}</label>
           <input
             type="password"
             value={password}
